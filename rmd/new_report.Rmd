@@ -1,17 +1,9 @@
-DIVIDER
-DIVIDER
-DIVIDER
-DIVIDER
-DIVIDER
-DIVIDER
-DIVIDER
-DIVIDER
-DIVIDER
-DIVIDER
-DIVIDER
-DIVIDER
-DIVIDER
-DIVIDER
-DIVIDER
-DIVIDER
-text under divider
+# Introduction
+- Brief overview of the dataset and the purpose of the analysis
+- Collaborative effort
+
+# Analysis by Country
+
+## Country A (Person 1)
+
+## Country B (Person 2)
