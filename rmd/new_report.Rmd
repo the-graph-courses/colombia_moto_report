@@ -1,1 +1,2 @@
 DIVIDER
+text under the divider
