@@ -3,6 +3,12 @@ Section 1
 
 This is section 1
 
+
+Roses are red,
+Violets are blue,
+Sugar is sweet,
+And so are you.
+
 Section 2
 =========
 
