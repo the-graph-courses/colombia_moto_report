@@ -6,6 +6,17 @@
 
 ## Country A (Person 1)
 
+- Load and preprocess data for Country A
+- Calculate and display average life expectancy
+- Create line plot of life expectancy trend
+- Identify top 3 factors and create bar plot
+- Write summary of findings
+- Load and preprocess data for Country A
+- Calculate and display average life expectancy
+- Create line plot of life expectancy trend
+- Identify top 3 factors and create bar plot
+- Write summary of findings
+
 ## Country B (Person 2)
 
 - Load and preprocess data for Country A
