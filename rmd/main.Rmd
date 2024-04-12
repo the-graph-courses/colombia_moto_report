@@ -15,8 +15,7 @@ if(!require(pacman)) install.packages("pacman")
 pacman::p_load(tidyverse, 
                here, 
                janitor, 
-               flextable,
-               gt)
+               knitr)
 ```
 
 ```{r}
@@ -65,7 +64,7 @@ age_sex_count <-
   count()
 
 
-flextable(age_sex_count)
+kable(age_sex_count)
 ```
 
 ```{r}
