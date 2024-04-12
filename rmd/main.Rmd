@@ -1,0 +1,87 @@
+---
+title: "Report on Motorcycle Accident Deaths in Colombia"
+subtitle: "Tidyverse and RMarkdown Practice"
+output: github_document
+---
+
+```{r include = FALSE}
+# Set chunk options
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
+
+```{r}
+# TASK 1: LOAD THE REQUIRED PACKAGES
+if(!require(pacman)) install.packages("pacman")
+pacman::p_load(tidyverse, 
+               here, 
+               janitor, 
+               flextable,
+               gt)
+```
+
+```{r}
+# TASK 2: IMPORT THE DATA
+col_accidents <- read_csv(here("data/motorcycle_accidents_colombia.csv"))
+```
+
+```{r}
+# TASK 3: CLEAN THE COLUMN NAMES 
+col_accidents_clean <-
+  col_accidents %>% 
+  clean_names()
+```
+
+```{r}
+# TASK 4: RENAME AND TRANSFORM VARIABLES
+col_accidents_clean2 <- 
+  col_accidents_clean %>%
+  rename(position = condition) %>% 
+ mutate(gender = str_to_title(gender))
+  
+ 
+```
+
+```{r}
+# TASK 5: CREATE A SUBSET
+col_accidents_subset <- 
+  col_accidents_clean2 %>% 
+  select(id, gender, age, age_group, position) %>% 
+  filter(position != "unknown")
+
+
+```
+
+```{r}
+# TASK 6: SUMMARIZE DATA
+age_sex_count <- 
+  col_accidents_subset %>% 
+  group_by(age_group, gender) %>% 
+  summarise(Number_of_deaths = n()) %>% 
+ungroup()
+
+age_sex_count <- 
+  col_accidents_subset %>% 
+  group_by(age_group, gender) %>% 
+  count()
+
+
+flextable(age_sex_count)
+```
+
+```{r}
+# TASK 7: VISUALIZE SUMMARY DATA
+age_sex_count %>% 
+  ggplot(aes(x = age_group, y = n, fill = gender)) + 
+  geom_col() + 
+  labs(titles = "Number of deaths by gender per age group",
+       subtitle = "Motorcycle Accidents in Colombia", 
+       caption = "Caption: Zenodo database",
+       y = "Number of deaths", 
+       x = "Age groups", 
+       fill = "Sex") + 
+  geom_text(aes(y = n, label = n), 
+            hjust = 0.5, 
+            vjust = -0.1, 
+            position = "stack", 
+            size = 2.5) 
+```
