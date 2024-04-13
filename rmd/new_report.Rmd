@@ -1,31 +1,29 @@
-# Introduction
-- Brief overview of the dataset and the purpose of the analysis
-- Collaborative effort
+---
+title: "Report on Motorcycle Accident Deaths in Colombia"
+subtitle: "Tidyverse and RMarkdown Practice"
+output: prettydoc::html_pretty
+---
 
-# Analysis by Country
+```{r include = FALSE}
+# Set chunk options
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+```
 
-## Country A (Person 1)
+```{r}
 
-- Load and preprocess data for Country A
-- Calculate and display average life expectancy
-- Create line plot of life expectancy trend
-- Identify top 3 factors and create bar plot
-- Write summary of findings
-- Load and preprocess data for Country A
-- Calculate and display average life expectancy
-- Create line plot of life expectancy trend
-- Identify top 3 factors and create bar plot
-- Write summary of findings
+# Load packages 
+if(!require(pacman)) install.packages("pacman")
+pacman::p_load(tidyverse, reactable, plotly)
 
-## Country B (Person 2)
+reactable(iris)
 
-- Load and preprocess data for Country A
-- Calculate and display average life expectancy
-- Create line plot of life expectancy trend
-- Identify top 3 factors and create bar plot
-- Write summary of findings
-- Load and preprocess data for Country A
-- Calculate and display average life expectancy
-- Create line plot of life expectancy trend
-- Identify top 3 factors and create bar plot
-- Write summary of findings
+
+## simple ggplot passed to plotly
+iris %>% 
+  ggplot(aes(x = Sepal.Length, y = Sepal.Width, color = Species)) +
+  geom_point() -> p
+
+ggplotly(p)
+  
+
+```
